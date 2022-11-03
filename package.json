@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "postinstall": "husky install",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
