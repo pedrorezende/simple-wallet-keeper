@@ -1,17 +1,17 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import walletsReducer from "./wallets";
+import keyringReducer from "./keyring";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 
 const persistConfig = {
-  key: "wallet-app",
+  key: "keyring-app",
   storage,
   version: 1,
-  whitelist: ["wallets"],
+  whitelist: ["keyring"],
 };
 
 const rootReducer = combineReducers({
-  wallets: walletsReducer,
+  keyring: keyringReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
