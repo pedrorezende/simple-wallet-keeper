@@ -5,4 +5,4 @@ export { WalletList } from "./WalletList";
 export { Container } from "./Container";
 export { WelcomePanel } from "./WelcomePanel";
 export { ErrorBoundary } from "./ErrorBoundary";
-export { InputField } from "./InputField";
+export { PasswordInputField } from "./PasswordInputField";

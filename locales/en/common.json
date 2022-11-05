@@ -1,3 +1,11 @@
 {
-  "hello": "Hello World"
+  "welcome": "Welcome to the Test Wallet App!",
+  "welcome_instructions": "Please choose a strong password to get started.",
+  "password": "Password",
+  "too_weak": "Too weak",
+  "password_strength": "Password strength",
+  "weak": "Weak",
+  "medium": "Medium",
+  "strong": "Strong",
+  "proceed": "Proceed"
 }
