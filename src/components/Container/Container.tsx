@@ -1,9 +1,9 @@
 import React from "react";
 
-export interface ContainerProps {
-  prop?: string;
-}
+type ContainerProps = {
+  children: React.ReactNode;
+};
 
-export function Container({ prop = "default value" }: ContainerProps) {
-  return <div>Container {prop}</div>;
+export function Container({ children }: ContainerProps) {
+  return <div>{children}</div>;
 }
