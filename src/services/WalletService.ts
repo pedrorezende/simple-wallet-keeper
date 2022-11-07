@@ -3,9 +3,21 @@ import { ethers } from "ethers";
 type EncryptedWalletPair = [address: string, encodedWallet: string];
 
 export class WalletService {
-  decrypt() {}
+  static async decrypt(password: string, encryptedWallet: string) {
+    return await ethers.Wallet.fromEncryptedJson(encryptedWallet, password);
+  }
 
-  verify() {}
+  static async verify(
+    password: string,
+    encryptedWallet: string
+  ): Promise<boolean> {
+    try {
+      await WalletService.decrypt(password, encryptedWallet);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
 
   static async create(password: string): Promise<EncryptedWalletPair> {
     const wallet = ethers.Wallet.createRandom();
