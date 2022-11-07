@@ -1,9 +1,13 @@
+import useTranslation from "next-translate/useTranslation";
 import React from "react";
 
 export interface WalletListProps {
-  prop?: string;
+  wallets: [];
 }
 
-export function WalletList({ prop = "default value" }: WalletListProps) {
-  return <div>WalletList {prop}</div>;
+export function WalletList({ wallets }: WalletListProps) {
+  const { t } = useTranslation();
+  return (
+    <div>{wallets.length === 0 && <div>{t("common:empty_wallet")}</div>}</div>
+  );
 }

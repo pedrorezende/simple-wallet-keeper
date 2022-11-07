@@ -7,5 +7,7 @@
   "weak": "Weak",
   "medium": "Medium",
   "strong": "Strong",
-  "proceed": "Proceed"
+  "proceed": "Proceed",
+  "empty_wallet": "Your wallet is empty. Click in the button below to create your first wallet!",
+  "create_wallet": "Create new wallet"
 }

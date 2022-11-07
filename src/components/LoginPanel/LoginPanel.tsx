@@ -1,26 +1,16 @@
 import { AuthForm } from "components/AuthForm";
 import { usePassword } from "hooks/usePassword";
 import useTranslation from "next-translate/useTranslation";
+import React from "react";
 import { useAppDispatch } from "store/hooks";
-import { createWallet } from "store/keyring";
-import { storeHashedPassword } from "store/user";
-import { getHashedPassword } from "utils/getHashedPassword";
 
-export function WelcomePanel() {
+export function LoginPanel() {
   const { t } = useTranslation();
   const password = usePassword();
   const dispatch = useAppDispatch();
 
-  const onCreateKeyring = async (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const hashedPassword = getHashedPassword(password.props.value);
-    await dispatch(
-      createWallet({
-        password: hashedPassword,
-        initialWallet: true,
-      })
-    );
-    dispatch(storeHashedPassword(hashedPassword));
   };
 
   return (
@@ -29,7 +19,7 @@ export function WelcomePanel() {
         {t("common:welcome")}
       </h1>
       <p className="mb-4 text-gray-500">{t("common:welcome_instructions")}</p>
-      <AuthForm onSubmit={onCreateKeyring} passwordData={password} />
+      <AuthForm onSubmit={onSubmit} passwordData={password} />
     </div>
   );
 }

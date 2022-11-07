@@ -1,31 +1,56 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "store";
+import { WalletService } from "services/WalletService";
 
 // Define a type for the slice state
 interface KeyringState {
   version: number;
-  data: [];
+  initialWalletAddress?: string;
+  wallets?: {
+    [publicKey: string]: string;
+  };
 }
+
+type CreateWalletParams = {
+  password: string;
+  initialWallet: boolean;
+};
 
 // Define the initial state using that type
 const initialState: KeyringState = {
   version: 1,
-  data: [],
 };
+
+export const createWallet = createAsyncThunk(
+  "keyring/createWallet",
+  async ({ password, initialWallet = false }: CreateWalletParams) => {
+    return {
+      wallet: await WalletService.create(password),
+      initialWallet,
+    };
+  }
+);
 
 export const keyringSlice = createSlice({
   name: "keyring",
   initialState,
-  reducers: {
-    create: (state, action: PayloadAction<KeyringState>) => {
-      state.version = 1;
-      state.data = [];
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(createWallet.fulfilled, (state, action) => {
+      const [address, encryptedWallet] = action.payload.wallet;
+      if (!state.wallets) {
+        state.wallets = {};
+      }
+
+      if (action.payload.initialWallet) {
+        state.initialWalletAddress = address;
+      }
+
+      state.wallets[address] = encryptedWallet;
+    });
   },
 });
 
-export const { create } = keyringSlice.actions;
-
-export const selectKeyring = (state: RootState) => state.keyring.data || [];
+export const selectKeyringWallets = (state: RootState) => state.keyring.wallets;
 export default keyringSlice.reducer;

@@ -6,3 +6,6 @@ export { Container } from "./Container";
 export { WelcomePanel } from "./WelcomePanel";
 export { ErrorBoundary } from "./ErrorBoundary";
 export { PasswordInputField } from "./PasswordInputField";
+export { WalletPanel } from "./WalletPanel";
+export { LoginPanel } from "./LoginPanel";
+export { AuthForm } from "./AuthForm";
