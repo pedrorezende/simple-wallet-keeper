@@ -8,7 +8,7 @@ import { getHashedPassword } from "utils/getHashedPassword";
 
 export function WelcomePanel() {
   const { t } = useTranslation();
-  const password = usePassword();
+  const password = usePassword({ enableStrengthChecker: true });
   const dispatch = useAppDispatch();
 
   const onCreateKeyring = async (e: React.FormEvent) => {

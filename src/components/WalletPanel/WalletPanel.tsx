@@ -4,7 +4,6 @@ import React from "react";
 
 export interface WalletPanelProps {
   wallets: object;
-  onCreateWallet: () => void;
 }
 
 export function WalletPanel({ wallets, onCreateWallet }: WalletPanelProps) {

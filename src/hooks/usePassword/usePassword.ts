@@ -2,6 +2,10 @@ import useTranslation from "next-translate/useTranslation";
 import { useState } from "react";
 import { passwordStrength } from "check-password-strength";
 
+export type usePasswordParams = {
+  enableStrengthChecker?: boolean;
+};
+
 export type PasswordProps = {
   value: string;
   placeholder: string;
@@ -17,7 +21,9 @@ export type usePasswordOutput = {
   props: PasswordProps;
 };
 
-export const usePassword = (): usePasswordOutput => {
+export const usePassword = ({
+  enableStrengthChecker = false,
+}: usePasswordParams = {}): usePasswordOutput => {
   const { t } = useTranslation();
   const [value, setValue] = useState<string>("");
   const [isVisible, setVisible] = useState<boolean>();
@@ -29,7 +35,9 @@ export const usePassword = (): usePasswordOutput => {
   };
 
   const onChange = (value: string) => {
-    checkStrength(value);
+    if (enableStrengthChecker) {
+      checkStrength(value);
+    }
     setValue(value);
   };
 

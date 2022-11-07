@@ -9,5 +9,8 @@
   "strong": "Strong",
   "proceed": "Proceed",
   "empty_wallet": "Your wallet is empty. Click in the button below to create your first wallet!",
-  "create_wallet": "Create new wallet"
+  "create_wallet": "Create new wallet",
+  "login": "Login",
+  "login_instructions": "Please enter your password to unlock your keyring",
+  "invalid_password": "Invalid password"
 }
