@@ -1,13 +1,23 @@
+import { WalletEntry } from "components/WalletEntry";
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
 
 export interface WalletListProps {
-  wallets: [];
+  wallets: string[];
+  initialWalletAddress: string;
 }
 
-export function WalletList({ wallets }: WalletListProps) {
+export function WalletList({ wallets, initialWalletAddress }: WalletListProps) {
   const { t } = useTranslation();
   return (
-    <div>{wallets.length === 0 && <div>{t("common:empty_wallet")}</div>}</div>
+    <ul>
+      {wallets.map((wallet) => (
+        <WalletEntry
+          key={`wallet-${wallet}`}
+          wallet={wallet}
+          canDelete={initialWalletAddress === wallet}
+        />
+      ))}
+    </ul>
   );
 }

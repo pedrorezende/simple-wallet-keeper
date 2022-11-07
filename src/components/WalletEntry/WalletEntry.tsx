@@ -1,9 +1,10 @@
 import React from "react";
 
 export interface WalletEntryProps {
-  prop?: string;
+  wallet: string;
+  canDelete: boolean;
 }
 
-export function WalletEntry({ prop = "default value" }: WalletEntryProps) {
-  return <div>WalletEntry {prop}</div>;
+export function WalletEntry({ wallet }: WalletEntryProps) {
+  return <li>{wallet}</li>;
 }

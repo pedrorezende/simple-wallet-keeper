@@ -53,4 +53,6 @@ export const keyringSlice = createSlice({
 });
 
 export const selectKeyringWallets = (state: RootState) => state.keyring.wallets;
+export const selectInitialWalletAddress = (state: RootState) =>
+  state.keyring.initialWalletAddress;
 export default keyringSlice.reducer;

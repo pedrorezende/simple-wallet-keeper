@@ -1,32 +1,39 @@
 import { Button } from "components/Button";
+import { WalletList } from "components/WalletList";
 import useTranslation from "next-translate/useTranslation";
 import React from "react";
+import { useAppDispatch } from "store/hooks";
+import { createWallet } from "store/keyring";
 
 export interface WalletPanelProps {
   wallets: object;
+  hashedPassword: string;
+  initialWalletAddress: string;
 }
 
-export function WalletPanel({ wallets, onCreateWallet }: WalletPanelProps) {
+export function WalletPanel({
+  wallets,
+  hashedPassword,
+  initialWalletAddress,
+}: WalletPanelProps) {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  const button = (
-    <Button
-      onClick={() => onCreateWallet()}
-      type="button"
-      text={t("common:create_wallet")}
-    />
+  const onCreateWallet = () => {
+    dispatch(createWallet({ password: hashedPassword, initialWallet: false }));
+  };
+
+  return (
+    <div>
+      <WalletList
+        initialWalletAddress={initialWalletAddress}
+        wallets={Object.keys(wallets)}
+      />
+      <Button
+        onClick={() => onCreateWallet()}
+        type="button"
+        text={t("common:create_wallet")}
+      />
+    </div>
   );
-
-  if (Object.keys(wallets).length === 0) {
-    return (
-      <div>
-        <p className="mb-10 text-2xl font-light text-gray-700">
-          {t("common:empty_wallet")}
-        </p>
-        {button}
-      </div>
-    );
-  }
-
-  return null;
 }
