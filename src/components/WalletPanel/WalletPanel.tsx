@@ -27,7 +27,7 @@ export function WalletPanel({
     <div>
       <WalletList
         initialWalletAddress={initialWalletAddress}
-        wallets={Object.keys(wallets)}
+        wallets={wallets}
       />
       <Button
         onClick={() => onCreateWallet()}

@@ -3,19 +3,20 @@ import useTranslation from "next-translate/useTranslation";
 import React from "react";
 
 export interface WalletListProps {
-  wallets: string[];
+  wallets: object;
   initialWalletAddress: string;
 }
 
 export function WalletList({ wallets, initialWalletAddress }: WalletListProps) {
   const { t } = useTranslation();
   return (
-    <ul>
-      {wallets.map((wallet) => (
+    <ul className="flex flex-col gap-2 mb-4">
+      {Object.keys(wallets).map((address) => (
         <WalletEntry
-          key={`wallet-${wallet}`}
-          wallet={wallet}
-          canDelete={initialWalletAddress === wallet}
+          key={`wallet-${address}`}
+          wallet={wallets[address]}
+          address={address}
+          canDelete={initialWalletAddress !== address}
         />
       ))}
     </ul>

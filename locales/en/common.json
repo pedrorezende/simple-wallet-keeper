@@ -12,5 +12,6 @@
   "create_wallet": "Create new wallet",
   "login": "Login",
   "login_instructions": "Please enter your password to unlock your keyring",
-  "invalid_password": "Invalid password"
+  "invalid_password": "Invalid password",
+  "deletion_prompt": "Are you sure you want to delete this wallet?"
 }

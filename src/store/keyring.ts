@@ -35,7 +35,13 @@ export const createWallet = createAsyncThunk(
 export const keyringSlice = createSlice({
   name: "keyring",
   initialState,
-  reducers: {},
+  reducers: {
+    removeWallet: (state, action: PayloadAction<string>) => {
+      if (state.wallets) {
+        delete state.wallets[action.payload];
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(createWallet.fulfilled, (state, action) => {
       const [address, encryptedWallet] = action.payload.wallet;
@@ -55,4 +61,6 @@ export const keyringSlice = createSlice({
 export const selectKeyringWallets = (state: RootState) => state.keyring.wallets;
 export const selectInitialWalletAddress = (state: RootState) =>
   state.keyring.initialWalletAddress;
+
+export const { removeWallet } = keyringSlice.actions;
 export default keyringSlice.reducer;
