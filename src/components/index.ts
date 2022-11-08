@@ -9,3 +9,4 @@ export { PasswordInputField } from "./PasswordInputField";
 export { WalletPanel } from "./WalletPanel";
 export { LoginPanel } from "./LoginPanel";
 export { AuthForm } from "./AuthForm";
+export { PrimaryKeyPanel } from "./PrimaryKeyPanel";

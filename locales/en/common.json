@@ -13,5 +13,11 @@
   "login": "Login",
   "login_instructions": "Please enter your password to unlock your keyring",
   "invalid_password": "Invalid password",
-  "deletion_prompt": "Are you sure you want to delete this wallet?"
+  "deletion_prompt": "Are you sure you want to delete this wallet?",
+  "private_key_instructions": "In order to view your private key, you must confirm your password",
+  "view_primary_key": "View Primary Key",
+  "hide_primary_key": "Hide Primary Key",
+  "delete_wallet": "Delete Wallet",
+  "close_modal": "Close this modal",
+  "your_private_key": "Your private key:"
 }
