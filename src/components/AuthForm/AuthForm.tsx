@@ -13,7 +13,7 @@ export interface AuthFormProps {
 export function AuthForm({ onSubmit, passwordData, error }: AuthFormProps) {
   const { t } = useTranslation();
   return (
-    <form onSubmit={onSubmit}>
+    <form role="form" onSubmit={onSubmit}>
       <PasswordInputField
         onChange={passwordData.onChange}
         isVisible={passwordData.isVisible}
