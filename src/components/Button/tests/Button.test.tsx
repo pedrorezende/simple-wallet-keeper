@@ -2,4 +2,8 @@ import React from "react";
 
 import { Button } from "../Button";
 
-describe("<Button />", () => {});
+describe("<Button />", () => {
+  it("tests are setting up correctly", () => {
+    expect(true).toBe(true);
+  });
+});
