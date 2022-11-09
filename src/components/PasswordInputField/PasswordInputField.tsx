@@ -19,17 +19,20 @@ export function PasswordInputField({
 }: PasswordInputFieldProps) {
   const { t } = useTranslation();
   return (
-    <div>
+    <fieldset>
       <div className="relative inline-block overflow-hidden">
         <input
+          role="textbox"
           required
           className="px-3 py-2 text-3xl font-light border border-gray-200 border-solid rounded-md color-gray-600 focus:outline-none"
           onChange={(e) => onChange(e.target.value)}
+          type={isVisible ? "text" : "password"}
           {...inputProps}
         />
         <i
           className="absolute top-0 right-0 flex items-center h-full p-3 bg-gray-100 border cursor-pointer rounded-tr-md rounded-br-md"
           onClick={toggleVisibility}
+          role="checkbox"
         >
           {isVisible ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
         </i>
@@ -39,6 +42,6 @@ export function PasswordInputField({
           {t("common:password_strength")}: {strength}
         </em>
       )}
-    </div>
+    </fieldset>
   );
 }

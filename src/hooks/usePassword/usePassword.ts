@@ -9,7 +9,6 @@ export type usePasswordParams = {
 export type PasswordProps = {
   value: string;
   placeholder: string;
-  type: string;
 };
 
 export type usePasswordOutput = {
