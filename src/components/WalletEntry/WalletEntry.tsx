@@ -40,6 +40,7 @@ export function WalletEntry({
         <div className="flex gap-3 mt-2 text-xs">
           {!displayPrimaryKey && (
             <button
+              role="button"
               onClick={() => setDisplayPrimaryKey(true)}
               className="text-blue-600 uppercase"
             >
@@ -49,6 +50,7 @@ export function WalletEntry({
 
           {displayPrimaryKey && (
             <button
+              role="button"
               onClick={() => setDisplayPrimaryKey(false)}
               className="text-blue-600 uppercase"
             >
@@ -57,7 +59,11 @@ export function WalletEntry({
           )}
 
           {canDelete && (
-            <button className="text-red-500 uppercase" onClick={onRemove}>
+            <button
+              role="button"
+              className="text-red-500 uppercase"
+              onClick={onRemove}
+            >
               {t("common:delete_wallet")}
             </button>
           )}
