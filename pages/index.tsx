@@ -1,4 +1,5 @@
 import { Container, LoginPanel, WalletPanel, WelcomePanel } from "components";
+import Head from "next/head";
 import { useAppSelector } from "store/hooks";
 import {
   selectInitialWalletAddress,
@@ -13,6 +14,9 @@ export default function Home() {
 
   return (
     <Container>
+      <Head>
+        <title>Binance Test Assessment</title>
+      </Head>
       {wallets === undefined && <WelcomePanel />}
       {wallets && !passwordHash && <LoginPanel wallets={wallets} />}
       {wallets && passwordHash && (
