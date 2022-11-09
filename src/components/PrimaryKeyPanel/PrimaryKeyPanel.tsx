@@ -56,6 +56,7 @@ export function PrimaryKeyPanel({
   return (
     <div
       onClick={onClose}
+      role="modal"
       className="fixed top-0 left-0 z-10 flex items-center justify-center w-full h-full cursor-pointer bg-black/60"
     >
       <div
